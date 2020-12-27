@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\AccountInfo;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\AccountInfo */
@@ -23,8 +24,6 @@ $max = date('Y-m-d', time());
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-<!--    --><?//= $form->field($model, 'birthday')->textInput() ?>
-
     <?= $form->field($model, 'birthday')->input('date', [
         'class'            => 'form-control date',
         'data-date-format' => 'YYYY-MM-DD',
@@ -40,3 +39,5 @@ $max = date('Y-m-d', time());
     <?php ActiveForm::end(); ?>
 
 </div>
+
+

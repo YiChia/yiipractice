@@ -15,7 +15,7 @@ use yii\web\Response;
 /**
  * AccountInfoController implements the CRUD actions for AccountInfo model.
  */
-class AccountInfoController extends Controller
+class AjaxInfoController extends Controller
 {
 //    /**
 //     * {@inheritdoc}

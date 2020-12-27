@@ -12,17 +12,32 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', '帳號資訊'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+
+$js = <<<JSSS
+$("#F1").on('click', function (e) {
+    if (confirm('請問你要刪除嗎？')) {
+        if (confirm('請問你要刪除嗎？')) {
+            $("#submitBtn").hide();
+            return true;
+        }
+    }
+    return false;
+})
+JSSS;
+$this->registerJs($js);
+
 ?>
 <div class="account-info-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a(Yii::t('app', '修改'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', '刪除'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
+            'id'=>'F1',
             'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                'confirm' => Yii::t('app', '請問你要刪除嗎?'),
                 'method' => 'post',
             ],
         ]) ?>
@@ -46,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'birthday',
                 'value' => function (AccountInfo $model) {
-                    return date('Y年m月d日', $model->birthday);
+                    return date('Y年m月d日', strtotime($model->birthday));
                 },
                 'contentOptions' => ['style' => 'width:130px;'],
             ],

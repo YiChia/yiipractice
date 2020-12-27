@@ -47,6 +47,7 @@ class AccountInfoSearch extends AccountInfo
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort'  => ['defaultOrder' => ['id' => SORT_DESC]],
+            'pagination' => ['pageSize' => 2],
         ]);
 
         $this->load($params);
